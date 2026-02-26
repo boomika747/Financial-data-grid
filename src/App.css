@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  /* Prevent body scroll */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+}
+
+.controls {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.grid-wrapper {
+  flex: 1;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  /* contain the scroll container */
+  position: relative;
+  color: #000;
+  background: #fff;
+}
+
+.grid-scroll-container {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+.grid-row-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  /* Ensure it spans horizontally if scrolled */
+  will-change: transform;
+}
+
+.grid-header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f0f0f0;
+  border-bottom: 2px solid #ccc;
+  font-weight: bold;
+}
+
+.grid-row {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  cursor: pointer;
+}
+
+.grid-row:hover {
+  background: #f9f9f9;
+}
+
+.grid-row[data-selected="true"] {
+  background: #e6f7ff;
+}
+
+.grid-cell,
+.grid-header-cell {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: inherit;
+  flex-shrink: 0;
+}
+
+.grid-header-cell {
+  background: #f0f0f0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.grid-header-cell:hover {
+  background: #e0e0e0;
+}
+
+.pinned-column {
+  position: sticky;
+  z-index: 5;
+  background: #fff;
+  /* override row background, but match it */
+}
+
+.grid-header-cell.pinned-column {
+  z-index: 15;
+  /* above both header and pinned column */
+  background: #f0f0f0;
+}
+
+/* Specific left offsets for pinned columns (hardcoded for simplicity: id=0, date=80px) */
+/* We will calculate left dynamically in JS instead of hardcoding */
+
+.debug-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #0f0;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: monospace;
+  z-index: 1000;
+  pointer-events: none;
+}
