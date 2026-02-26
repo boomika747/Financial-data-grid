@@ -8,7 +8,8 @@ Ensure you have Docker and Node.js installed on your machine.
 
 ### 1. Generating the Dataset
 
-Before running the application, you must generate the 1-million-row synthetic dataset:
+Before running the application, you must generate the 1-million-row synthetic dataset. *(Note: The resulting `transactions.json` file is approximately 170MB and is deliberately excluded from source control to comply with Git file size limits).*
+
 ```bash
 npm install
 npm run generate-data
